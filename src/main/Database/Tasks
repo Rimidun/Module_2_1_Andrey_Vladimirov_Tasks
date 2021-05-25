@@ -1,0 +1,49 @@
+Task 1.
+
+SELECT person.FirstName AS "First name", person.LastName AS "Last name", address.City AS "City", address.State AS "State"
+FROM person LEFT OUTER JOIN address ON person.personId = address.personId
+
+
+Task 2.
+
+SELECT salary as "SecondHighestSalary"
+FROM employee
+ORDER BY salary DESC
+LIMIT 1, 1
+
+Вывести второе по величине значение с проверкой на null:
+
+SET N = N-1;
+  RETURN (
+      SELECT DISTINCT Salary
+      FROM EMPLOYEE
+      ORDER BY Salary Desc
+      LIMIT 1 OFFSET N
+  );
+
+Task 3.
+
+SELECT employee.Name
+FROM Employee employee INNER JOIN Employee manager
+ON employee.ManagerId = manager.Id
+WHERE employee.Salary > manager.Salary
+
+Task 4.
+
+SELECT email, COUNT(*)
+FROM person
+GROUP BY email
+HAVING count(*) > 1;
+
+Task 5.
+
+SELECT customers.name AS "Customers "
+FROM customers LEFT JOIN orders ON customers.id = orders.customerid
+WHERE orders.customerid IS NULL
+
+Task 6.
+
+SELECT class
+FROM courses
+GROUP BY class
+HAVING count (student) >= 5;
